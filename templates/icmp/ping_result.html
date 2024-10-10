@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-200 font-sans">
+    <!-- Navbar -->
+    <header class="bg-white p-4 shadow-md">
+        <div class="flex items-center justify-between">
+            <a href="/" class="text-indigo-600 text-2xl font-semibold">Cenayang Scanner</a>
+            <div class="lg:hidden">
+                <button type="button" class="text-gray-600 hover:text-indigo-600 hamburger-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="hidden lg:flex lg:gap-x-12 hidden-menu">
+                <a href="/about" class="text-sm font-semibold leading-6 text-gray-800">About</a>
+                <a href="/services" class="text-sm font-semibold leading-6 text-gray-800">Services</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto mt-8 flex">
+        <!-- Sidebar -->
+        <aside class="w-1/4 bg-gray-800 text-white p-4">
+            <h2 class="text-lg font-semibold">Menu</h2>
+           <a href="/nmap" class="flex items-center px-4 py-2 text-white hover:bg-gray-800">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4zM2 12a2 2 0 100-4 2 2 0 000 4zM18 12a2 2 0 100-4 2 2 0 000 4z" />
+                </svg>
+                <span>Nmap</span>
+              </a>
+              
+              <a href="/whois" class="flex items-center px-4 py-2 text-white hover:bg-gray-800">
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4zM2 12a2 2 0 100-4 2 2 0 000 4zM18 12a2 2 0 100-4 2 2 0 000 4z" />
+                </svg>
+                <span>Whois</span>
+              </a>
+              
+              <a href="/ping" class="flex items-center px-4 py-2 text-white hover:bg-gray-800">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M10 12a2 2 0 100-4 2 2 0 000 4zM2 12a2 2 0 100-4 2 2 0 000 4zM18 12a2 2 0 100-4 2 2 0 000 4z" />
+                    </svg>
+                    <span>Ping</span>
+                </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-3/4 p-4">
+            <h2 class="text-2xl font-semibold">Test Koneksi</h2>
+
+            <!-- Form Input -->
+            <form id="scanner-form" action="/pings" method="post" class="mt-4">
+                <div class="mb-4">
+                    <label for="domain">Target Host or IP:</label>
+                    <input type="text" id="domain" name="domain" class="w-full p-2 border rounded">
+                </div>
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Start Scan</button>
+            </form>
+
+            <!-- Result Container -->
+            <div id="scan-result" class="mt-8 p-4 bg-white rounded overflow-auto">
+                <h2 class="text-2xl font-bold mt-8">Ping ICMP Details</h2> <br>
+                <p>Address: {{.Addr}}</p>
+                <p>Packets Sent: {{.PacketsSent}}</p>
+                <p>Packets Received: {{.PacketsRecv}}</p>
+                <p>Packet Loss: {{.PacketLoss}}%</p>
+                <br>
+                <p>Min RTT: {{.MinRtt}}</p>
+                <p>Avg RTT: {{.AvgRtt}}</p>
+                <p>Max RTT: {{.MaxRtt}}</p>
+                <p>StdDev RTT: {{.StdDevRtt}}</p>
+
+                <h2 class="text-2xl font-bold mt-8">Packets Results</h2> <br>
+                {{range .Packets}}
+                <p class="text-white-500">{{.}}</p>
+                {{ end }}
+            </div>
+        </main>
+        
+    </div>
+</body>
+</html>

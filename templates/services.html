@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns:x-bind="">
+<head>
+    <title>Cenayang Scanner</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<header class="bg-white p-4 shadow-md">
+    <div class="flex items-center justify-between">
+        <a href="/" class="text-indigo-600 text-2xl font-semibold">Cenayang Scanner</a>
+        <div class="lg:hidden">
+            <button type="button" class="text-gray-600 hover:text-indigo-600 hamburger-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12 hidden-menu">
+            <a href="/about" class="text-sm font-semibold leading-6 text-gray-800">About</a>
+            <a href="/services" class="text-sm font-semibold leading-6 text-gray-800">Services</a>
+        </div>
+    </div>
+</header>
+
+
+
+<div class="py-8 flex items-center justify-center">
+    <!-- Nmap Service -->
+    <div class="bg-white rounded-lg p-6 m-4 shadow-md w-80">
+        <div class="text-3xl text-indigo-600 mb-2">
+            <i class="fas fa-shield"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Nmap Service</h3>
+        <p class="text-gray-700">
+            Amankan jaringan anda dengan Nmap, a powerful security scanning tool.
+        </p>
+    </div>
+
+    <!-- Whois Service -->
+    <div class="bg-white rounded-lg p-6 m-4 shadow-md w-80">
+        <div class="text-3xl text-indigo-600 mb-2">
+            <i class="fas fa-search"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Whois Service</h3>
+        <p class="text-gray-700">
+            Dapatkan informasi mendetail tentang domain dan alamat IP dengan Whois.
+        </p>
+    </div>
+
+    <!-- Ping Service -->
+    <div class="bg-white rounded-lg p-6 m-4 shadow-md w-80">
+        <div class="text-3xl text-indigo-600 mb-2">
+            <i class="fas fa-wifi"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Ping Service</h3>
+        <p class="text-gray-700">
+            Check koneksi host atau network menggunakan Ping.
+        </p>
+    </div>
+</div>
+
+<div class="bg-indigo-600 text-white text-center py-4">
+    <p class="text-sm">Your network's security is our top priority</p>
+</div>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".hamburger-button").click(function() {
+            $(".hidden-menu").slideToggle();
+        });
+    });
+</script>
+
+</html>
